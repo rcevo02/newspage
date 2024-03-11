@@ -20,10 +20,8 @@ include_once 'includes/functions.php';
 
 <nav class="navbar navbar-expand-lg bg-black">
   <div class="container">
-    <div>
-      <a class="navbar-brand fs-4 fw-semibold text-white">Robins Nyhetssida</a>
-      <img src="img/news.png" class="img-fluid bg-white">
-    </div>
+    <a class="navbar-brand fs-4 fw-semibold text-white">Robins Nyhetssida</a>
+    <img src="img/news2.png" class="img-fluid" style="height: 50px; width: auto;">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -49,7 +47,7 @@ include_once 'includes/functions.php';
     foreach($rows as $row) {
       echo "<div class='d-flex justify-content-end mt-2'>";
       echo "<a href='editarticleform.php?article_id=" . $row['article_id'] . "'><i class='fa-solid fa-file-pen text-primary me-4'></i></a>";
-      echo "<a href='editarticleform.php?article_id=" . $row['article_id'] . "'><i class='fa-solid fa-trash text-danger'></i></a>";
+      echo "<a onclick='return confirm(\"Are you sure you want to delete this?\");' href='delete.php?article_id=" . $row['article_id'] . "'><i class='fa-solid fa-trash text-danger'></i></a>";
       echo "</div>";
       echo "<h2 class='display-6 fw-bold mb-5'>" . $row['article_heading'] . "</h2>";
       echo "<img src='img/{$row['article_img']}' class='img-fluid' width='800' height='600'>";

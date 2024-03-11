@@ -7,7 +7,7 @@ function emptyPostArray(){
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $orderInsertStatus=editArticle($pdo);
+  $articleInsertStatus=editArticle($pdo);
   header("Location: ".$_SERVER['PHP_SELF']);
 }
 ?>
