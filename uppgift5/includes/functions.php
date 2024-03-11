@@ -10,5 +10,16 @@ function addArticle($pdo){
     $stmt_addArticle->bindParam(':aimgtext', $_POST['aimgtext'], PDO::PARAM_STR);
     $stmt_addArticle->execute();
 }
+function editArticle($pdo){
+    $stmt_addArticle = $pdo->prepare('UPDATE news_articles SET article_heading=:aheading, article_text=:atext, article_date=:adate, article_author_fname=:afname');
+    $stmt_addArticle->bindParam(':aheading', $_POST['aheading'], PDO::PARAM_STR);
+    $stmt_addArticle->bindParam(':atext', $_POST['atext'], PDO::PARAM_STR);
+    $stmt_addArticle->bindParam(':adate', $_POST['adate'], PDO::PARAM_STR);
+    $stmt_addArticle->bindParam(':aauthorfname', $_POST['aauthorfname'], PDO::PARAM_STR);
+    $stmt_addArticle->bindParam(':aauthorlname', $_POST['aauthorlname'], PDO::PARAM_STR);
+    $stmt_addArticle->bindParam(':aimg', $_POST['aimg'], PDO::PARAM_STR);
+    $stmt_addArticle->bindParam(':aimgtext', $_POST['aimgtext'], PDO::PARAM_STR);
+    $stmt_addArticle->execute();
+}
 
 ?>
