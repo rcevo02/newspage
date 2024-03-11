@@ -1,1 +1,1 @@
-# Detta är en nyhetssida jag lagat på
+# This is a newspage i am working on to test my skill in PHP and MySQL
