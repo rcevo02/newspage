@@ -1,5 +1,6 @@
 <?php
 include_once 'includes/config.php';
+include_once 'includes/functions.php';
 ?>
 
 <!DOCTYPE html>
@@ -34,25 +35,26 @@ include_once 'includes/config.php';
   </div>
 </nav>
 
-<div class="container text-white border-top border-bottom p-5 mb-5">
+<div class="container text-white border-top border-bottom p-3 mb-5">
     <?php
     $sth =  $pdo->query('SELECT * FROM news_articles');
     $rows = $sth->fetchAll();
 
     foreach($rows as $row) {
-        echo "<h2 class='display-6 fw-bold mb-5'>" . $row['article_heading'] . "</h2>";
-        echo "<img src='img/{$row['article_img']}' class='img-fluid' width='800' height='600'>";
-        echo "<h6 class='mb-4 mt-2 fw-light fst-italic'>" . $row['article_img_text'] . "</h6>";
-        echo "<p class='mb-5'>" . $row['article_text'] . "</p>";
-        echo "<div class='d-flex justify-content-between'>";
-        echo "<p class=''>Datum: <strong>" . $row['article_date'] . "</strong></p>";
-        echo "<p class=''>Författare: <strong>" . $row['article_author_fname'] . " " . $row['article_author_lname'] . "</strong></p>";
-        echo "</div>";
-        if(!next($rows)) {
-            return;
-        } else{
-            echo "<hr class='mb-4'>";
-        }
+      echo "<a href='editarticleform.php?article_id=" . $row['article_id'] . "'>Edit page</a>";
+      echo "<h2 class='display-6 fw-bold mb-5'>" . $row['article_heading'] . "</h2>";
+      echo "<img src='img/{$row['article_img']}' class='img-fluid' width='800' height='600'>";
+      echo "<h6 class='mb-4 mt-2 fw-light fst-italic'>" . $row['article_img_text'] . "</h6>";
+      echo "<p class='mb-5'>" . $row['article_text'] . "</p>";
+      echo "<div class='d-flex justify-content-between'>";
+      echo "<p class=''>Datum: <strong>" . $row['article_date'] . "</strong></p>";
+      echo "<p class=''>Författare: <strong>" . $row['article_author_fname'] . " " . $row['article_author_lname'] . "</strong></p>";
+      echo "</div>";
+      if(!next($rows)) {
+          return;
+      } else{
+          echo "<hr class='mb-4'>";
+      }
     }
     ?>
 </div>
