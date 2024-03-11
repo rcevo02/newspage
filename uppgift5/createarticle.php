@@ -7,7 +7,7 @@ function emptyPostArray(){
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $articleInsertStatus=editArticle($pdo);
+  $articleInsertStatus=addArticle($pdo);
   header("Location: ".$_SERVER['PHP_SELF']);
 }
 ?>
@@ -22,35 +22,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body class="bg-black">
+<body class="bg-black overflow-hidden">
 
 <nav class="navbar navbar-expand-lg bg-black">
-  <div class="container">
-    <a class="navbar-brand fs-4 fw-semibold text-white">Robins Nyhetssida</a>
+  <div class="container pb-2 border-bottom">
+    <a class="navbar-brand fs-3 fw-semibold text-white">Robin's Newspage</a>
+    <img src="img/newss.png" class="img-fluid" style="height: 50px; width: auto;">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link fs-5 fw-bold text-white" aria-current="page" href="news.php">Show news</a>
+          <a class="nav-link fs-5 fw-bold text-white" aria-current="page" href="news.php">Newspage</a>
         </li>
         <div class="mx-5 vr text-white"></div>
         <li class="nav-item">
-          <a class="nav-link fs-5 fw-bold text-white" href="articleform.php">Create new article</a>
+          <a class="nav-link fs-5 fw-bold text-white" href="createarticle.php">Create new article</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container text-white border-top">
-  <h2 class="display-5 text-center text-white fw-bold mt-5">Edit article:</h2>
-</div>
-
-<div class="container text-white border-top border-black border-1">
+<div class="container d-flex flex-column justify-content-center align-items-center text-white border-top border-black border-1" style="height: 90vh">
+  <h2 class="display-5 text-center text-white fw-bold mt-5">Create new article:</h2>
   <div>
-    <form class="w-75 m-auto p-5" action="" method="post">
+    <form style="width: 900px !important;" class="p-2" action="" method="post">
       <div class="mb-3">
         <label for="aheading" class="form-label">Heading:</label>
         <input id="aheading" name="aheading" type="text" placeholder="Please insert heading" required="required" class="form-control">
@@ -58,10 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <div class="mb-3">
         <label for="atext" class="form-label">Text:</label>
         <input id="atext" name="atext" type="text" placeholder="Please insert text" required="required" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label for="adate" class="form-label">Date:</label>
-        <input id="adate" name="adate" type="date" required="required" class="form-control">
       </div>
       <div class="mb-3">
         <label for="aauthorfname" class="form-label">Author first name:</label>

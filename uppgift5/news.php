@@ -19,35 +19,35 @@ include_once 'includes/functions.php';
 <body class="bg-black">
 
 <nav class="navbar navbar-expand-lg bg-black">
-  <div class="container">
-    <a class="navbar-brand fs-4 fw-semibold text-white">Robins Nyhetssida</a>
-    <img src="img/news2.png" class="img-fluid" style="height: 50px; width: auto;">
+  <div class="container pb-2 border-bottom">
+    <a class="navbar-brand fs-3 fw-semibold text-white">Robin's Newspage</a>
+    <img src="img/newss.png" class="img-fluid" style="height: 50px; width: auto;">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link fs-5 fw-bold text-white" aria-current="page" href="news.php">Show news</a>
+          <a class="nav-link fs-5 fw-bold text-white" aria-current="page" href="news.php">Newspage</a>
         </li>
         <div class="mx-5 vr text-white"></div>
         <li class="nav-item">
-          <a class="nav-link fs-5 fw-bold text-white" href="articleform.php">Create new article</a>
+          <a class="nav-link fs-5 fw-bold text-white" href="createarticle.php">Create new article</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container text-white border-top border-bottom p-3 mb-5">
+<div class="container text-white border-bottom p-2 mb-5">
     <?php
     $sth =  $pdo->query('SELECT * FROM news_articles');
     $rows = $sth->fetchAll();
 
     foreach($rows as $row) {
       echo "<div class='d-flex justify-content-end mt-2'>";
-      echo "<a href='editarticleform.php?article_id=" . $row['article_id'] . "'><i class='fa-solid fa-file-pen text-primary me-4'></i></a>";
-      echo "<a onclick='return confirm(\"Are you sure you want to delete this?\");' href='delete.php?article_id=" . $row['article_id'] . "'><i class='fa-solid fa-trash text-danger'></i></a>";
+      echo "<a href='editarticle.php?article_id=" . $row['article_id'] . "'><i class='fa-solid fa-file-pen text-warning me-4'></i></a>";
+      echo "<a onclick='return confirm(\"Are you sure?\");' href='delete.php?article_id=" . $row['article_id'] . "'><i class='fa-solid fa-trash text-danger'></i></a>";
       echo "</div>";
       echo "<h2 class='display-6 fw-bold mb-5'>" . $row['article_heading'] . "</h2>";
       echo "<img src='img/{$row['article_img']}' class='img-fluid' width='800' height='600'>";
