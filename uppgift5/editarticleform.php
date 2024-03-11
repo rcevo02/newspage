@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </nav>
 
 <div class="container text-white border-top">
-  <h2 class="display-5 text-center text-white fw-bold mt-5">Create new article:</h2>
+  <h2 class="display-5 text-center text-white fw-bold mt-5">Edit article:</h2>
 </div>
 
 <div class="container text-white border-top border-black border-1">

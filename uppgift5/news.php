@@ -11,13 +11,19 @@ include_once 'includes/functions.php';
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/style.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="fontawesome/css/fontawesome.css" rel="stylesheet" />
+<link href="fontawesome/css/brands.css" rel="stylesheet" />
+<link href="fontawesome/css/solid.css" rel="stylesheet" />
 </head>
 
 <body class="bg-black">
 
 <nav class="navbar navbar-expand-lg bg-black">
   <div class="container">
-    <a class="navbar-brand fs-4 fw-semibold text-white">Robins Nyhetssida</a>
+    <div>
+      <a class="navbar-brand fs-4 fw-semibold text-white">Robins Nyhetssida</a>
+      <img src="img/news.png" class="img-fluid bg-white">
+    </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -41,7 +47,10 @@ include_once 'includes/functions.php';
     $rows = $sth->fetchAll();
 
     foreach($rows as $row) {
-      echo "<a href='editarticleform.php?article_id=" . $row['article_id'] . "'>Edit page</a>";
+      echo "<div class='d-flex justify-content-end mt-2'>";
+      echo "<a href='editarticleform.php?article_id=" . $row['article_id'] . "'><i class='fa-solid fa-file-pen text-primary me-4'></i></a>";
+      echo "<a href='editarticleform.php?article_id=" . $row['article_id'] . "'><i class='fa-solid fa-trash text-danger'></i></a>";
+      echo "</div>";
       echo "<h2 class='display-6 fw-bold mb-5'>" . $row['article_heading'] . "</h2>";
       echo "<img src='img/{$row['article_img']}' class='img-fluid' width='800' height='600'>";
       echo "<h6 class='mb-4 mt-2 fw-light fst-italic'>" . $row['article_img_text'] . "</h6>";
